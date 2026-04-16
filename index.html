@@ -4,350 +4,169 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Il Pollaio di Alessandro</title>
-  <meta name="description" content="Uova fresche e allevamento avicolo a Revislate, Gattico-Veruno (Novara)." />
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
+  <style>
     body {
       font-family: Arial, sans-serif;
       background: #f7f4ee;
+      margin: 0;
       color: #222;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
     }
 
     .container {
       width: 92%;
       max-width: 1100px;
-      margin: 0 auto;
+      margin: auto;
     }
 
     header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5ddd0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-      gap: 12px;
+      background: white;
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
     }
 
     .logo {
-      font-size: 1.2rem;
-      font-weight: 700;
+      font-weight: bold;
+      font-size: 20px;
     }
 
     .hero {
-      padding: 60px 0 40px;
+      padding: 30px 0;
     }
 
     .badge {
-      display: inline-block;
       background: #f3e1b6;
-      color: #6a4a00;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 18px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 15px;
+      font-size: 14px;
     }
 
     h1 {
-      font-size: 2.2rem;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      color: #1e1e1e;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      color: #4b4b4b;
-      margin-bottom: 24px;
-      max-width: 700px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      font-size: 26px;
+      margin: 15px 0;
     }
 
     .btn {
       display: inline-block;
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-weight: 700;
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-weight: bold;
     }
 
     .btn-primary {
-      background: #1f1f1f;
+      background: black;
       color: white;
     }
 
     .btn-secondary {
-      background: white;
-      border: 1px solid #d9d1c4;
-      color: #222;
+      border: 1px solid #ccc;
     }
 
     section {
-      padding: 42px 0;
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-      color: #1f1f1f;
-    }
-
-    .section-text {
-      color: #555;
-      margin-bottom: 24px;
-    }
-
-    .grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      padding: 30px 0;
     }
 
     .card {
       background: white;
-      border: 1px solid #e5ddd0;
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-    }
-
-    .status {
-      display: inline-block;
-      margin-top: 10px;
-      background: #e8f6e8;
-      color: #1f6a1f;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    .dark {
-      background: #1f1f1f;
-      color: white;
-    }
-
-    .dark .section-title,
-    .dark .section-text {
-      color: white;
-    }
-
-    .contact-box {
-      background: #f3e1b6;
-      border: 1px solid #e6cf92;
-      border-radius: 24px;
-      padding: 26px;
-      color: #2a2a2a;
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
     }
 
     footer {
-      padding: 26px 0 40px;
-      color: #666;
-      font-size: 0.95rem;
       text-align: center;
-    }
-
-    ul.clean {
-      padding-left: 18px;
-      color: #555;
-    }
-
-    ul.clean li {
-      margin-bottom: 8px;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="container header-inner">
-      <div>
-        <div class="logo">Il Pollaio di Alessandro</div>
-        <div style="font-size: 0.9rem; color: #666;">Revislate – Gattico-Veruno (Novara)</div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div onclick="this.innerHTML = '<iframe width=&quot;100%&quot; height=&quot;250&quot; src=&quot;https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&quot; frameborder=&quot;0&quot; allowfullscreen></iframe>'"
-     style="position:relative; cursor:pointer; margin-bottom:20px;">
-
-  <img src="anteprima.jpg"
-       style="width:100%; border-radius:20px;" />
-
-  <div style="
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    font-size:50px;
-    color:white;
-    background:rgba(0,0,0,0.6);
-    border-radius:50%;
-    width:80px;
-    height:80px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  ">
-    ▶
+<header>
+  <div class="container">
+    <div class="logo">Il Pollaio di Alessandro</div>
+    <div style="font-size:14px; color:#666;">Revislate – Gattico-Veruno (Novara)</div>
   </div>
+</header>
 
-</div>
-      <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4"
-     style="width:100%; border-radius:20px; margin-bottom:20px;" />
-      <div class="container">
-        <div class="badge">Produzione locale • Contatto diretto</div>
-        <h1>Uova fresche direttamente dal nostro pollaio</h1>
-        <p>
-Benvenuti a <strong>Il Pollaio di Alessandro</strong>, un piccolo allevamento situato a Revislate,
-nel comune di Gattico-Veruno (Novara). Offriamo uova fresche da produzione locale,
-con attenzione alla qualità e al benessere degli animali.
-</p>
-        <div class="buttons">
-          <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">Scrivimi su WhatsApp</a>
-          <a class="btn btn-secondary" href="#prodotti">Scopri i prodotti</a>
+<section class="hero">
+  <div class="container">
+
+    <!-- VIDEO COPERTINA -->
+    <a href="https://youtube.com/shorts/8KvxqnkLFi0?is=UmNLoX2Ul83YYX2Y" target="_blank" style="display:block; margin-bottom:20px;">
+      <div style="position:relative; border-radius:20px; overflow:hidden;">
+        <img src="anteprima.jpg" style="width:100%; display:block;" />
+
+        <div style="
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-50%,-50%);
+          background:white;
+          border-radius:50%;
+          width:70px;
+          height:70px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:30px;
+        ">
+          ▶
         </div>
       </div>
-    </section>
+    </a>
 
-    <section id="prodotti">
-      <div class="container">
-        <h2 class="section-title">Prodotti disponibili</h2>
-        <p class="section-text">Attualmente la vendita è dedicata alle uova da consumo.</p>
+    <div class="badge">Produzione locale • Contatto diretto</div>
 
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Uova da consumo</h3>
-            <p>
-              Uova fresche prodotte nel nostro allevamento, ideali per privati e famiglie.
-              Contattaci per disponibilità, ritiro e informazioni.
-            </p>
-            <ul class="clean">
-  <li>Confezioni da 6 uova</li>
-  <li>Confezioni da 10 uova</li>
-  <li>Vendita a quantità su richiesta</li>
-</ul>
-            <span class="status">Disponibile ora</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <h1>Uova fresche direttamente dal nostro pollaio</h1>
 
-    <section>
-      <div class="container">
-        <h2 class="section-title">Chi siamo</h2>
-        <p class="section-text">
-          Il Pollaio di Alessandro nasce con l’idea di offrire un prodotto semplice, genuino e
-          diretto. Un’attività locale, vicina al territorio, con attenzione alla qualità e al
-          rapporto diretto con chi acquista.
-        </p>
+    <p>
+      Il Pollaio di Alessandro è un piccolo allevamento a Revislate (Novara).
+      Offriamo uova fresche con vendita diretta.
+    </p>
 
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Punti di forza</h3>
-            <ul class="clean">
-              <li>Produzione locale</li>
-              <li>Contatto diretto con l’allevatore</li>
-              <li>Ordini semplici via WhatsApp</li>
-              <li>Sito pronto a crescere con nuovi prodotti</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Zona</h3>
-            <p>
-              Revislate – Gattico-Veruno (NO)<br />
-              Provincia di Novara
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <a class="btn btn-primary" href="https://wa.me/393341067510">WhatsApp</a>
+    <a class="btn btn-secondary" href="#prodotti">Prodotti</a>
 
-    <section class="dark">
-      <div class="container">
-        <h2 class="section-title">Prossimamente</h2>
-        <p class="section-text">
-          Il sito è già predisposto per l’ampliamento dell’attività con nuove categorie.
-        </p>
+  </div>
+</section>
 
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Uova feconde</h3>
-            <p>Sezione pronta da attivare quando inizierai la vendita.</p>
-          </div>
-          <div class="card">
-            <h3>Pulcini</h3>
-            <p>Area dedicata ai capi di taglia piccola.</p>
-          </div>
-          <div class="card">
-            <h3>Pollastrelli</h3>
-            <p>Spazio per la vendita dei capi di taglia media.</p>
-          </div>
-          <div class="card">
-            <h3>Galline in produzione</h3>
-            <p>Sezione pensata per i capi di taglia grande, già pronti alla deposizione.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="prodotti">
+  <div class="container">
+    <h2>Prodotti</h2>
 
-    <section id="contatti">
-      <div class="container">
-        <div class="contact-box">
-          <h2 class="section-title" style="margin-bottom: 10px;">Contatti</h2>
-          <p style="margin-bottom: 8px;"><strong>Nome:</strong> Il Pollaio di Alessandro</p>
-          <p style="margin-bottom: 8px;"><strong>Telefono:</strong> 334 106 7510</p>
-          <p style="margin-bottom: 8px;"><strong>Zona:</strong> Revislate – Gattico-Veruno (Novara)</p>
-          <a class="btn btn-secondary"
-   href="https://www.google.com/maps/search/?api=1&query=Revislate+Gattico+Veruno"
-   target="_blank">
-   Apri su Google Maps
-</a>
-          <div style="margin-top: 18px;">
-            <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">Contattami ora</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © 2026 Il Pollaio di Alessandro — Revislate, Gattico-Veruno (Novara)
+    <div class="card">
+      <h3>Uova da consumo</h3>
+      <p>Disponibili su richiesta</p>
+      <ul>
+        <li>Confezioni da 6</li>
+        <li>Confezioni da 10</li>
+        <li>Quantità maggiori</li>
+      </ul>
     </div>
-  </footer>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Contatti</h2>
+
+    <p>📍 Revislate – Gattico-Veruno</p>
+    <p>📞 334 106 7510</p>
+
+    <a class="btn btn-primary" href="https://wa.me/393341067510">Scrivimi</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Il Pollaio di Alessandro
+</footer>
 
 </body>
 </html>
