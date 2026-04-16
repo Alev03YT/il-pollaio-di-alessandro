@@ -10,6 +10,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -25,7 +29,7 @@
 
     img {
       display: block;
-      width: 100%;
+      max-width: 100%;
     }
 
     .container {
@@ -35,39 +39,50 @@
     }
 
     header {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.97);
       border-bottom: 1px solid #e5dccb;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
       padding: 18px 0;
     }
 
     .brand-title {
-      font-size: 1.2rem;
-      font-weight: 700;
       margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.2;
     }
 
     .brand-subtitle {
       margin: 6px 0 0;
       color: #6f6f6f;
-      font-size: 0.95rem;
-    }
-
-    .top-space {
-      padding-top: 18px;
+      font-size: 0.98rem;
+      line-height: 1.3;
     }
 
     .header-cta {
-      display: inline-block;
-      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: #1f1f1f;
       color: white;
-      padding: 14px 22px;
+      padding: 13px 20px;
       border-radius: 999px;
       font-weight: 700;
+      font-size: 0.98rem;
     }
 
     .hero {
-      padding: 26px 0 38px;
+      padding: 22px 0 38px;
     }
 
     .hero-media {
@@ -76,17 +91,22 @@
       overflow: hidden;
       margin-bottom: 24px;
       box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+      cursor: pointer;
+      background: #ddd;
     }
 
     .hero-media img {
       width: 100%;
-      height: auto;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      object-position: center;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.08));
+      background: linear-gradient(to top, rgba(0,0,0,0.48), rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.02));
+      pointer-events: none;
     }
 
     .play-button {
@@ -104,24 +124,33 @@
       justify-content: center;
       font-size: 28px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .hero-media-text {
       position: absolute;
       left: 18px;
       bottom: 18px;
+      right: 18px;
       color: white;
+      z-index: 2;
       text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      pointer-events: none;
     }
 
     .hero-media-text strong {
       display: block;
       font-size: 1rem;
+      line-height: 1.2;
       margin-bottom: 4px;
     }
 
     .hero-media-text span {
+      display: block;
       font-size: 0.92rem;
+      line-height: 1.2;
+      opacity: 0.95;
     }
 
     .badge {
@@ -133,12 +162,14 @@
       font-size: 0.88rem;
       font-weight: 700;
       margin-bottom: 18px;
+      line-height: 1.2;
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 2rem;
       line-height: 1.08;
       margin: 0 0 14px;
+      letter-spacing: -0.03em;
     }
 
     .hero-text {
@@ -155,10 +186,15 @@
     }
 
     .btn {
-      display: inline-block;
-      padding: 13px 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
       border-radius: 14px;
       font-weight: 700;
+      font-size: 0.98rem;
+      text-align: center;
     }
 
     .btn-primary {
@@ -183,6 +219,7 @@
       font-size: 0.8rem;
       font-weight: 700;
       margin-bottom: 10px;
+      line-height: 1.3;
     }
 
     .section-title {
@@ -203,7 +240,7 @@
     }
 
     .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: 1fr;
     }
 
     .card {
@@ -218,6 +255,7 @@
       margin-top: 0;
       margin-bottom: 10px;
       font-size: 1.15rem;
+      line-height: 1.25;
     }
 
     .card p {
@@ -267,7 +305,8 @@
     }
 
     .dark-section .card h3,
-    .dark-section .card p {
+    .dark-section .card p,
+    .dark-section .feature-list {
       color: white;
     }
 
@@ -290,14 +329,84 @@
       color: #6a6a6a;
       font-size: 0.95rem;
     }
+
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .video-box {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .video-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      color: #111;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-media {
+        max-width: 560px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container">
-      <p class="brand-title">Il Pollaio di Alessandro</p>
-      <p class="brand-subtitle">Revislate – Gattico-Veruno (Novara)</p>
+    <div class="container header-inner">
+      <div>
+        <p class="brand-title">Il Pollaio di Alessandro</p>
+        <p class="brand-subtitle">Revislate – Gattico-Veruno (Novara)</p>
+      </div>
       <a class="header-cta" href="https://wa.me/393341067510" target="_blank">WhatsApp diretto</a>
     </div>
   </header>
@@ -305,7 +414,7 @@
   <main>
     <section class="hero">
       <div class="container">
-        <a class="hero-media" href="https://youtube.com/shorts/8KvxqnkLFi0?is=UmNLoX2Ul83YYX2Y" target="_blank">
+        <div class="hero-media" onclick="openVideo()">
           <img src="anteprima.jpg" alt="Il Pollaio di Alessandro" />
           <div class="hero-overlay"></div>
           <div class="play-button">▶</div>
@@ -313,7 +422,7 @@
             <strong>Guarda il nostro allevamento</strong>
             <span>Apri il video</span>
           </div>
-        </a>
+        </div>
 
         <div class="badge">Produzione locale • Contatto diretto</div>
         <h1>Uova fresche direttamente dal nostro pollaio</h1>
@@ -452,6 +561,35 @@
   <footer>
     © 2026 Il Pollaio di Alessandro — Revislate, Gattico-Veruno (Novara)
   </footer>
+
+  <div id="videoModal" class="video-modal" onclick="closeVideo(event)">
+    <div class="video-box">
+      <button class="video-close" onclick="closeVideo()">✕</button>
+      <iframe
+        id="videoFrame"
+        src=""
+        title="Video allevamento"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    function openVideo() {
+      document.getElementById("videoModal").style.display = "flex";
+      document.getElementById("videoFrame").src =
+        "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
+    }
+
+    function closeVideo(event) {
+      if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
+        document.getElementById("videoModal").style.display = "none";
+        document.getElementById("videoFrame").src = "";
+      }
+    }
+  </script>
 
 </body>
 </html>
