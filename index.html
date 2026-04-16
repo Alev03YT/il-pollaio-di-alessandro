@@ -10,10 +10,6 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -28,110 +24,105 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      width: 100%;
     }
 
     .container {
-      width: min(1120px, 92%);
+      width: 92%;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(8px);
+      background: #ffffff;
       border-bottom: 1px solid #e5dccb;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 0;
+      padding: 18px 0;
     }
 
     .brand-title {
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 700;
       margin: 0;
     }
 
     .brand-subtitle {
-      margin: 4px 0 0;
-      color: #6b6b6b;
+      margin: 6px 0 0;
+      color: #6f6f6f;
       font-size: 0.95rem;
+    }
+
+    .top-space {
+      padding-top: 18px;
     }
 
     .header-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
+      margin-top: 18px;
       background: #1f1f1f;
       color: white;
-      padding: 12px 16px;
+      padding: 14px 22px;
       border-radius: 999px;
       font-weight: 700;
-      font-size: 0.95rem;
-      white-space: nowrap;
     }
 
     .hero {
-      padding: 28px 0 54px;
+      padding: 26px 0 38px;
     }
 
     .hero-media {
       position: relative;
-      border-radius: 28px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
-      margin-bottom: 28px;
-      background: #ddd;
+      margin-bottom: 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.14);
     }
 
-.hero-media img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-}
+    .hero-media img {
+      width: 100%;
+      height: auto;
+    }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.52), rgba(0,0,0,0.08));
+      background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.08));
     }
 
-.play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-}
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.94);
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+    }
 
     .hero-media-text {
-  position: absolute;
-  left: 16px;
-  bottom: 60px;
-  color: white;
-}
-    .hero-media-text strong {
-  font-size: 1rem;
-}
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
 
-.hero-media-text span {
-  font-size: 0.9rem;
-}
+    .hero-media-text strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-media-text span {
+      font-size: 0.92rem;
+    }
 
     .badge {
       display: inline-block;
@@ -145,17 +136,16 @@
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 4.1rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
-      letter-spacing: -0.03em;
+      font-size: 2.1rem;
+      line-height: 1.08;
+      margin: 0 0 14px;
     }
 
     .hero-text {
+      color: #4e4e4e;
+      font-size: 1.04rem;
+      margin-bottom: 22px;
       max-width: 760px;
-      font-size: 1.08rem;
-      color: #4f4f4f;
-      margin-bottom: 24px;
     }
 
     .button-row {
@@ -165,58 +155,46 @@
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 12px 20px;
+      display: inline-block;
+      padding: 13px 18px;
       border-radius: 14px;
       font-weight: 700;
-      font-size: 0.98rem;
-      transition: 0.2s ease;
     }
 
     .btn-primary {
       background: #1f1f1f;
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      color: white;
     }
 
     .btn-secondary {
-      background: #fff;
-      color: #1f1f1f;
+      background: white;
       border: 1px solid #ddd1bc;
-    }
-
-    .btn-maps {
-      background: #efe2bf;
-      color: #5c4300;
-      border: 1px solid #e4d1a1;
+      color: #1f1f1f;
     }
 
     section {
-      padding: 46px 0;
+      padding: 40px 0;
     }
 
     .section-label {
       color: #8a6d18;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       font-size: 0.8rem;
       font-weight: 700;
       margin-bottom: 10px;
     }
 
     .section-title {
-      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      font-size: 1.8rem;
       line-height: 1.1;
       margin: 0 0 12px;
     }
 
     .section-text {
       color: #5a5a5a;
+      margin: 0 0 22px;
       max-width: 720px;
-      margin: 0 0 24px;
     }
 
     .grid {
@@ -228,26 +206,33 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
-    .grid-4 {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
     .card {
-      background: #fff;
+      background: white;
       border: 1px solid #e7dece;
-      border-radius: 24px;
-      padding: 24px;
+      border-radius: 22px;
+      padding: 22px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.05);
     }
 
     .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.18rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.15rem;
     }
 
     .card p {
-      margin: 0;
       color: #585858;
+      margin-top: 0;
+    }
+
+    .feature-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: #555;
+    }
+
+    .feature-list li {
+      margin-bottom: 8px;
     }
 
     .status {
@@ -259,16 +244,6 @@
       color: #226322;
       font-size: 0.84rem;
       font-weight: 700;
-    }
-
-    .feature-list {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: #555;
-    }
-
-    .feature-list li {
-      margin-bottom: 8px;
     }
 
     .dark-section {
@@ -287,21 +262,21 @@
 
     .dark-section .card {
       background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
       box-shadow: none;
     }
 
-    .dark-section .card p,
-    .dark-section .card h3 {
+    .dark-section .card h3,
+    .dark-section .card p {
       color: white;
     }
 
     .contact-box {
       background: linear-gradient(135deg, #f0ddb0, #e7cc86);
       border-radius: 28px;
-      padding: 28px;
+      padding: 26px;
       border: 1px solid #ddc07a;
-      box-shadow: 0 14px 30px rgba(99, 74, 8, 0.12);
+      box-shadow: 0 14px 30px rgba(99,74,8,0.12);
     }
 
     .contact-line {
@@ -315,43 +290,14 @@
       color: #6a6a6a;
       font-size: 0.95rem;
     }
-
-    @media (max-width: 720px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .header-cta {
-        width: auto;
-padding: 10px 16px;
-      }
-
-      .hero {
-        padding-top: 18px;
-      }
-
-      .play-button {
-        width: 76px;
-        height: 76px;
-        font-size: 1.7rem;
-      }
-
-      .hero-media-text {
-        left: 16px;
-        bottom: 14px;
-      }
-    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container header-inner">
-      <div>
-        <p class="brand-title">Il Pollaio di Alessandro</p>
-        <p class="brand-subtitle">Revislate – Gattico-Veruno (Novara)</p>
-      </div>
+    <div class="container">
+      <p class="brand-title">Il Pollaio di Alessandro</p>
+      <p class="brand-subtitle">Revislate – Gattico-Veruno (Novara)</p>
       <a class="header-cta" href="https://wa.me/393341067510" target="_blank">WhatsApp diretto</a>
     </div>
   </header>
@@ -449,7 +395,7 @@ padding: 10px 16px;
               Provincia di Novara
             </p>
             <div style="margin-top:16px;">
-              <a class="btn btn-maps" href="https://www.google.com/maps/search/?api=1&query=Revislate+Gattico+Veruno" target="_blank">Apri su Google Maps</a>
+              <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Revislate+Gattico+Veruno" target="_blank">Apri su Google Maps</a>
             </div>
           </div>
         </div>
@@ -464,7 +410,7 @@ padding: 10px 16px;
           Quando vorrai ampliare l’attività, potrai aggiungere nuove sezioni senza rifare il sito da zero.
         </p>
 
-        <div class="grid grid-4">
+        <div class="grid grid-2">
           <div class="card">
             <h3>Uova feconde</h3>
             <p>Sezione pronta da attivare quando inizierai la vendita.</p>
