@@ -71,7 +71,7 @@
       align-items: center;
       justify-content: center;
       font-size: 24px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
       flex-shrink: 0;
     }
 
@@ -113,6 +113,7 @@
       box-shadow: 0 16px 40px rgba(0,0,0,0.14);
       cursor: pointer;
       background: #ddd;
+      width: 100%;
     }
 
     .hero-media img {
@@ -394,147 +395,135 @@
       cursor: pointer;
     }
 
-@media (min-width: 768px) {
-  .header-inner {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+    /* ===== SLIDER CARD ===== */
+    .slider-shell {
+      position: relative;
+      margin-top: 6px;
+    }
 
-  .grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .grid.slider-ready {
+      display: flex !important;
+      gap: 18px;
+      overflow: hidden;
+      scroll-behavior: smooth;
+      touch-action: pan-y;
+    }
 
-  h1 {
-    font-size: 3rem;
-  }
+    .grid.slider-ready .card {
+      min-width: 100%;
+      flex: 0 0 100%;
+      margin: 0;
+    }
 
-  .section-title {
-    font-size: 2.2rem;
-  }
+    .slider-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
 
-  .hero-media {
-    max-width: 560px;
-  }
-}
+    .slider-btn {
+      width: 46px;
+      height: 46px;
+      border: 1px solid #d8ccb4;
+      background: #ffffff;
+      color: #1f1f1f;
+      border-radius: 999px;
+      font-size: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
 
-/* ===== SLIDER CARD ===== */
-.slider-shell {
-  position: relative;
-  margin-top: 6px;
-}
+    .slider-btn::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-top: 3px solid currentColor;
+      border-right: 3px solid currentColor;
+      display: block;
+    }
 
-.grid.slider-ready {
-  display: flex !important;
-  gap: 18px;
-  overflow: hidden;
-  scroll-behavior: smooth;
-  touch-action: pan-y;
-}
+    .slider-btn.prev::before {
+      transform: rotate(-135deg);
+      margin-left: 4px;
+    }
 
-.grid.slider-ready .card {
-  min-width: 100%;
-  flex: 0 0 100%;
-  margin: 0;
-}
+    .slider-btn.next::before {
+      transform: rotate(45deg);
+      margin-right: 4px;
+    }
 
-.slider-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 18px;
-}
+    .slider-btn.hidden {
+      visibility: hidden;
+      pointer-events: none;
+      opacity: 0;
+    }
 
-.slider-btn {
-  width: 46px;
-  height: 46px;
-  border: 1px solid #d8ccb4;
-  background: #ffffff;
-  color: #1f1f1f;
-  border-radius: 999px;
-  font-size: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
-}
+    .slider-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
 
-.slider-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 22px rgba(0,0,0,0.12);
-}
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(31,31,31,0.22);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
 
-.slider-btn::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-top: 3px solid currentColor;
-  border-right: 3px solid currentColor;
-  display: block;
-}
+    .slider-dot.active {
+      background: #1f1f1f;
+      transform: scale(1.15);
+    }
 
-.slider-btn.prev::before {
-  transform: rotate(-135deg);
-  margin-left: 4px;
-}
+    .dark-section .slider-btn {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: none;
+    }
 
-.slider-btn.next::before {
-  transform: rotate(45deg);
-  margin-right: 4px;
-}
+    .dark-section .slider-dot {
+      background: rgba(255,255,255,0.28);
+    }
 
-.slider-btn.hidden {
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
-}
+    .dark-section .slider-dot.active {
+      background: white;
+    }
 
-.slider-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
+    @media (min-width: 768px) {
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-.slider-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(31,31,31,0.22);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: transform 0.18s ease, background 0.18s ease;
-}
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-.slider-dot.active {
-  background: #1f1f1f;
-  transform: scale(1.15);
-}
+      h1 {
+        font-size: 3rem;
+      }
 
-.dark-section .slider-btn {
-  background: rgba(255,255,255,0.08);
-  color: white;
-  border-color: rgba(255,255,255,0.2);
-  box-shadow: none;
-}
+      .section-title {
+        font-size: 2.2rem;
+      }
 
-.dark-section .slider-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: none;
-  background: rgba(255,255,255,0.12);
-}
-
-.dark-section .slider-dot {
-  background: rgba(255,255,255,0.28);
-}
-
-.dark-section .slider-dot.active {
-  background: white;
-} 
+      .hero-media {
+        max-width: 560px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -569,34 +558,17 @@
         <h1>Uova fresche da produzione locale, disponibili direttamente dal nostro allevamento</h1>
 
         <div style="margin:18px 0 22px; position:relative;">
-          <img src="uova.jpg"
-               alt="Uova fresche"
-               style="
-                 width:100%;
-                 border-radius:18px;
-                 height:180px;
-                 object-fit:cover;
-                 box-shadow:0 10px 24px rgba(0,0,0,0.12);
-               " />
-          <div style="
-            position:absolute;
-            bottom:10px;
-            left:12px;
-            background:rgba(0,0,0,0.6);
-            color:white;
-            padding:6px 10px;
-            border-radius:10px;
-            font-size:13px;
-            font-weight:bold;
-          ">
+          <img src="uova.jpg" alt="Uova fresche"
+               style="width:100%; border-radius:18px; height:180px; object-fit:cover; box-shadow:0 10px 24px rgba(0,0,0,0.12);" />
+          <div style="position:absolute; bottom:10px; left:12px; background:rgba(0,0,0,0.6); color:white; padding:6px 10px; border-radius:10px; font-size:13px; font-weight:bold;">
             Uova fresche disponibili
           </div>
         </div>
 
         <p class="hero-text">
-  Il Pollaio di Alessandro offre uova fresche da produzione locale a Revislate, nel comune di Gattico-Veruno.
-  Contatto diretto, disponibilità semplice e ritiro da concordare rapidamente via WhatsApp.
-</p>
+          Il Pollaio di Alessandro offre uova fresche da produzione locale a Revislate, nel comune di Gattico-Veruno.
+          Contatto diretto, disponibilità semplice e ritiro da concordare rapidamente via WhatsApp.
+        </p>
 
         <div class="button-row">
           <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">Scrivimi su WhatsApp</a>
@@ -617,43 +589,30 @@
         <div class="grid grid-2">
           <div class="card">
             <h3>Uova fresche da consumo</h3>
+            <p>Uova fresche prodotte nel nostro allevamento, disponibili per privati e famiglie della zona.</p>
 
-            <p>
-              Uova fresche prodotte nel nostro allevamento, disponibili per privati e famiglie della zona.
-            </p>
-
-            <div style="
-              background:#f6f1e8;
-              border-radius:14px;
-              padding:14px;
-              margin:14px 0;
-              font-weight:700;
-            ">
+            <div style="background:#f6f1e8; border-radius:14px; padding:14px; margin:14px 0; font-weight:700;">
               🥚 6 uova → 2,40 €<br>
               🥚 10 uova → 4,00 €
             </div>
 
             <ul class="feature-list">
-  <li>Uova fresche da produzione locale</li>
-  <li>Consegna o ritiro da concordare</li>
-  <li>Disponibilità aggiornata su richiesta</li>
-  <li>Ordine diretto via WhatsApp</li>
-</ul>
+              <li>Uova fresche da produzione locale</li>
+              <li>Consegna o ritiro da concordare</li>
+              <li>Disponibilità aggiornata su richiesta</li>
+              <li>Ordine diretto via WhatsApp</li>
+            </ul>
 
             <span class="status">Disponibile oggi</span>
 
             <div style="margin-top:16px;">
-              <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">
-                Ordina su WhatsApp
-              </a>
+              <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">Ordina su WhatsApp</a>
             </div>
           </div>
 
           <div class="card">
             <h3>Ordini e ritiro</h3>
-            <p>
-              Per disponibilità, prenotazioni e informazioni puoi contattarci direttamente su WhatsApp.
-            </p>
+            <p>Per disponibilità, prenotazioni e informazioni puoi contattarci direttamente su WhatsApp.</p>
             <ul class="feature-list">
               <li>Contatto veloce</li>
               <li>Risposta diretta</li>
@@ -665,146 +624,106 @@
     </section>
 
     <section>
-  <div class="container">
-
-    <div class="section-label">Come ordinare</div>
-    <h2 class="section-title">Ordina in modo semplice e veloce</h2>
-    <p class="section-text">
-      Ordinare le nostre uova è semplice: contattaci direttamente su WhatsApp e ti risponderemo per disponibilità e ritiro.
-    </p>
-
-    <div class="grid grid-2">
-
-      <div class="card">
-        <h3>1. Scrivici su WhatsApp</h3>
-        <p>
-          Invia un messaggio indicando quante uova ti servono o chiedendo disponibilità.
+      <div class="container">
+        <div class="section-label">Come ordinare</div>
+        <h2 class="section-title">Ordina in modo semplice e veloce</h2>
+        <p class="section-text">
+          Ordinare le nostre uova è semplice: contattaci direttamente su WhatsApp e ti risponderemo per disponibilità e ritiro.
         </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>1. Scrivici su WhatsApp</h3>
+            <p>Invia un messaggio indicando quante uova ti servono o chiedendo disponibilità.</p>
+          </div>
+
+          <div class="card">
+            <h3>2. Conferma disponibilità</h3>
+            <p>Ti rispondiamo rapidamente indicando quantità disponibili e tempi.</p>
+          </div>
+
+          <div class="card">
+            <h3>3. Ritiro o accordo</h3>
+            <p>Concordiamo insieme il ritiro in zona Revislate – Gattico-Veruno.</p>
+          </div>
+
+          <div class="card">
+            <h3>4. Consegna prodotto</h3>
+            <p>Uova fresche pronte per il consumo, direttamente dal nostro allevamento.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:26px;">
+          <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">Scrivici ora su WhatsApp</a>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>2. Conferma disponibilità</h3>
-        <p>
-          Ti rispondiamo rapidamente indicando quantità disponibili e tempi.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>3. Ritiro o accordo</h3>
-        <p>
-          Concordiamo insieme il ritiro in zona Revislate – Gattico-Veruno.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>4. Consegna prodotto</h3>
-        <p>
-          Uova fresche pronte per il consumo, direttamente dal nostro allevamento.
-        </p>
-      </div>
-
-    </div>
-
-    <div style="margin-top:26px;">
-      <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">
-        Scrivici ora su WhatsApp
-      </a>
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <section>
-  <div class="container">
-
-    <div class="section-label">Perché scegliere le nostre uova</div>
-    <h2 class="section-title">Qualità, semplicità e contatto diretto</h2>
-    <p class="section-text">
-      Scegliere Il Pollaio di Alessandro significa affidarsi a una realtà locale, con vendita diretta e attenzione alla qualità del prodotto.
-    </p>
-
-    <div class="grid grid-2">
-
-      <div class="card">
-        <h3>Produzione locale</h3>
-        <p>
-          Le uova provengono direttamente dal nostro allevamento, senza passaggi inutili.
+      <div class="container">
+        <div class="section-label">Perché scegliere le nostre uova</div>
+        <h2 class="section-title">Qualità, semplicità e contatto diretto</h2>
+        <p class="section-text">
+          Scegliere Il Pollaio di Alessandro significa affidarsi a una realtà locale, con vendita diretta e attenzione alla qualità del prodotto.
         </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Produzione locale</h3>
+            <p>Le uova provengono direttamente dal nostro allevamento, senza passaggi inutili.</p>
+          </div>
+
+          <div class="card">
+            <h3>Contatto diretto</h3>
+            <p>Puoi scriverci direttamente su WhatsApp e ricevere informazioni rapide e chiare.</p>
+          </div>
+
+          <div class="card">
+            <h3>Disponibilità reale</h3>
+            <p>Ti diciamo subito cosa è disponibile, senza attese inutili e senza complicazioni.</p>
+          </div>
+
+          <div class="card">
+            <h3>Rapporto di fiducia</h3>
+            <p>Dietro ogni ordine c’è una persona reale, non un sistema impersonale.</p>
+          </div>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Contatto diretto</h3>
-        <p>
-          Puoi scriverci direttamente su WhatsApp e ricevere informazioni rapide e chiare.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Disponibilità reale</h3>
-        <p>
-          Ti diciamo subito cosa è disponibile, senza attese inutili e senza complicazioni.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Rapporto di fiducia</h3>
-        <p>
-          Dietro ogni ordine c’è una persona reale, non un sistema impersonale.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <section>
-  <div class="container">
+      <div class="container">
+        <div class="section-label">Domande frequenti</div>
+        <h2 class="section-title">Informazioni utili prima di ordinare</h2>
 
-    <div class="section-label">Domande frequenti</div>
-    <h2 class="section-title">Informazioni utili prima di ordinare</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Come posso ordinare?</h3>
+            <p>Puoi ordinare scrivendoci direttamente su WhatsApp. Ti risponderemo con disponibilità e informazioni.</p>
+          </div>
 
-    <div class="grid">
+          <div class="card">
+            <h3>Le uova sono sempre disponibili?</h3>
+            <p>La disponibilità può variare. Per questo consigliamo di contattarci prima per conferma.</p>
+          </div>
 
-      <div class="card">
-        <h3>Come posso ordinare?</h3>
-        <p>
-          Puoi ordinare scrivendoci direttamente su WhatsApp. Ti risponderemo con disponibilità e informazioni.
-        </p>
+          <div class="card">
+            <h3>Dove si effettua il ritiro?</h3>
+            <p>Il ritiro avviene in zona Revislate – Gattico-Veruno, da concordare direttamente.</p>
+          </div>
+
+          <div class="card">
+            <h3>In che confezioni vendete le uova?</h3>
+            <p>Attualmente vendiamo confezioni da 6 e da 10 uova, con possibilità di quantità maggiori su richiesta.</p>
+          </div>
+
+          <div class="card">
+            <h3>Come vengono allevate le galline?</h3>
+            <p>Le galline sono allevate con attenzione e cura, per garantire un prodotto semplice e genuino.</p>
+          </div>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Le uova sono sempre disponibili?</h3>
-        <p>
-          La disponibilità può variare. Per questo consigliamo di contattarci prima per conferma.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Dove si effettua il ritiro?</h3>
-        <p>
-          Il ritiro avviene in zona Revislate – Gattico-Veruno, da concordare direttamente.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>In che confezioni vendete le uova?</h3>
-        <p>
-          Attualmente vendiamo confezioni da 6 e da 10 uova, con possibilità di quantità maggiori su richiesta.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Come vengono allevate le galline?</h3>
-        <p>
-          Le galline sono allevate con attenzione e cura, per garantire un prodotto semplice e genuino.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <section>
       <div class="container">
@@ -877,10 +796,10 @@
         <div class="contact-box">
           <div class="section-label" style="color:#6d5200;">Contatti</div>
           <h2 class="section-title" style="margin-bottom:14px;">Contattaci per disponibilità e ordini</h2>
-<p class="contact-line"><strong>Azienda:</strong> Il Pollaio di Alessandro</p>
-<p class="contact-line"><strong>Telefono / WhatsApp:</strong> 334 106 7510</p>
-<p class="contact-line"><strong>Zona:</strong> Revislate – Gattico-Veruno (Novara)</p>
-<p class="contact-line"><strong>Ordini:</strong> contatto diretto e disponibilità aggiornata su richiesta</p>
+          <p class="contact-line"><strong>Azienda:</strong> Il Pollaio di Alessandro</p>
+          <p class="contact-line"><strong>Telefono / WhatsApp:</strong> 334 106 7510</p>
+          <p class="contact-line"><strong>Zona:</strong> Revislate – Gattico-Veruno (Novara)</p>
+          <p class="contact-line"><strong>Ordini:</strong> contatto diretto e disponibilità aggiornata su richiesta</p>
 
           <div class="button-row" style="margin-top:18px;">
             <a class="btn btn-primary" href="https://wa.me/393341067510" target="_blank">Contattami ora</a>
@@ -910,269 +829,114 @@
   </div>
 
   <script>
-  function openVideo() {
-    document.getElementById("videoModal").style.display = "flex";
-    document.getElementById("videoFrame").src =
-      "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
-  }
-
-  function closeVideo(event) {
-    if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
-      document.getElementById("videoModal").style.display = "none";
-      document.getElementById("videoFrame").src = "";
+    function openVideo() {
+      document.getElementById("videoModal").style.display = "flex";
+      document.getElementById("videoFrame").src =
+        "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
     }
-  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const grids = document.querySelectorAll(".grid");
-
-    grids.forEach((grid, gridIndex) => {
-      const cards = grid.querySelectorAll(".card");
-      if (cards.length <= 1) return;
-
-      grid.classList.add("slider-ready");
-
-      const shell = document.createElement("div");
-      shell.className = "slider-shell";
-
-      const parent = grid.parentNode;
-      parent.insertBefore(shell, grid);
-      shell.appendChild(grid);
-
-      const controls = document.createElement("div");
-      controls.className = "slider-controls";
-
-      const prevBtn = document.createElement("button");
-      prevBtn.className = "slider-btn hidden";
-      prevBtn.setAttribute("type", "button");
-      prevBtn.innerHTML = "‹";
-
-      const dots = document.createElement("div");
-      dots.className = "slider-dots";
-
-      const nextBtn = document.createElement("button");
-      nextBtn.className = "slider-btn";
-      nextBtn.setAttribute("type", "button");
-      nextBtn.innerHTML = "›";
-
-      controls.appendChild(prevBtn);
-      controls.appendChild(dots);
-      controls.appendChild(nextBtn);
-      shell.appendChild(controls);
-
-      let currentIndex = 0;
-
-      cards.forEach((_, i) => {
-        const dot = document.createElement("button");
-        dot.className = "slider-dot" + (i === 0 ? " active" : "");
-        dot.setAttribute("type", "button");
-        dot.setAttribute("aria-label", "Vai alla card " + (i + 1));
-        dot.addEventListener("click", () => goToSlide(i));
-        dots.appendChild(dot);
-      });
-
-      const allDots = dots.querySelectorAll(".slider-dot");
-<script>
-  function openVideo() {
-    document.getElementById("videoModal").style.display = "flex";
-    document.getElementById("videoFrame").src =
-      "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
-  }
-
-  function closeVideo(event) {
-    if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
-      document.getElementById("videoModal").style.display = "none";
-      document.getElementById("videoFrame").src = "";
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const grids = document.querySelectorAll(".grid");
-
-    grids.forEach((grid) => {
-      const cards = grid.querySelectorAll(".card");
-      if (cards.length <= 1) return;
-
-      grid.classList.add("slider-ready");
-
-      const shell = document.createElement("div");
-      shell.className = "slider-shell";
-
-      const parent = grid.parentNode;
-      parent.insertBefore(shell, grid);
-      shell.appendChild(grid);
-
-      const controls = document.createElement("div");
-      controls.className = "slider-controls";
-
-      const prevBtn = document.createElement("button");
-      prevBtn.className = "slider-btn prev hidden";
-      prevBtn.setAttribute("type", "button");
-      prevBtn.setAttribute("aria-label", "Card precedente");
-
-      const dots = document.createElement("div");
-      dots.className = "slider-dots";
-
-      const nextBtn = document.createElement("button");
-      nextBtn.className = "slider-btn next";
-      nextBtn.setAttribute("type", "button");
-      nextBtn.setAttribute("aria-label", "Card successiva");
-
-      controls.appendChild(prevBtn);
-      controls.appendChild(dots);
-      controls.appendChild(nextBtn);
-      shell.appendChild(controls);
-
-<script>
-  function openVideo() {
-    document.getElementById("videoModal").style.display = "flex";
-    document.getElementById("videoFrame").src =
-      "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
-  }
-
-  function closeVideo(event) {
-    if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
-      document.getElementById("videoModal").style.display = "none";
-      document.getElementById("videoFrame").src = "";
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const grids = document.querySelectorAll(".grid");
-
-    grids.forEach((grid) => {
-      const cards = grid.querySelectorAll(".card");
-      if (cards.length <= 1) return;
-
-      grid.classList.add("slider-ready");
-
-      const shell = document.createElement("div");
-      shell.className = "slider-shell";
-
-      const parent = grid.parentNode;
-      parent.insertBefore(shell, grid);
-      shell.appendChild(grid);
-
-      const controls = document.createElement("div");
-      controls.className = "slider-controls";
-
-      const prevBtn = document.createElement("button");
-      prevBtn.className = "slider-btn prev hidden";
-      prevBtn.setAttribute("type", "button");
-      prevBtn.setAttribute("aria-label", "Card precedente");
-
-      const dots = document.createElement("div");
-      dots.className = "slider-dots";
-
-<script>
-  function openVideo() {
-    document.getElementById("videoModal").style.display = "flex";
-    document.getElementById("videoFrame").src =
-      "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
-  }
-
-  function closeVideo(event) {
-    if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
-      document.getElementById("videoModal").style.display = "none";
-      document.getElementById("videoFrame").src = "";
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const grids = document.querySelectorAll(".grid");
-
-    grids.forEach((grid) => {
-      const cards = grid.querySelectorAll(".card");
-      if (cards.length <= 1) return;
-
-      grid.classList.add("slider-ready");
-
-      const shell = document.createElement("div");
-      shell.className = "slider-shell";
-
-      const parent = grid.parentNode;
-      parent.insertBefore(shell, grid);
-      shell.appendChild(grid);
-
-      const controls = document.createElement("div");
-      controls.className = "slider-controls";
-
-      const prevBtn = document.createElement("button");
-      prevBtn.className = "slider-btn prev hidden";
-      prevBtn.type = "button";
-      prevBtn.setAttribute("aria-label", "Card precedente");
-
-      const dots = document.createElement("div");
-      dots.className = "slider-dots";
-
-      const nextBtn = document.createElement("button");
-      nextBtn.className = "slider-btn next";
-      nextBtn.type = "button";
-      nextBtn.setAttribute("aria-label", "Card successiva");
-
-      controls.appendChild(prevBtn);
-      controls.appendChild(dots);
-      controls.appendChild(nextBtn);
-      shell.appendChild(controls);
-
-      let currentIndex = 0;
-
-      cards.forEach((_, i) => {
-        const dot = document.createElement("button");
-        dot.className = "slider-dot" + (i === 0 ? " active" : "");
-        dot.type = "button";
-        dot.setAttribute("aria-label", "Vai alla card " + (i + 1));
-        dot.addEventListener("click", () => goToSlide(i));
-        dots.appendChild(dot);
-      });
-
-      const allDots = dots.querySelectorAll(".slider-dot");
-
-      function updateUI() {
-        prevBtn.classList.toggle("hidden", currentIndex === 0);
-        nextBtn.classList.toggle("hidden", currentIndex === cards.length - 1);
-
-        allDots.forEach((dot, i) => {
-          dot.classList.toggle("active", i === currentIndex);
-        });
+    function closeVideo(event) {
+      if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
+        document.getElementById("videoModal").style.display = "none";
+        document.getElementById("videoFrame").src = "";
       }
+    }
 
-      function goToSlide(index) {
-        currentIndex = Math.max(0, Math.min(index, cards.length - 1));
-        grid.scrollTo({
-          left: currentIndex * grid.clientWidth,
-          behavior: "smooth"
+    document.addEventListener("DOMContentLoaded", function () {
+      const grids = document.querySelectorAll(".grid");
+
+      grids.forEach((grid) => {
+        const cards = grid.querySelectorAll(".card");
+        if (cards.length <= 1) return;
+
+        grid.classList.add("slider-ready");
+
+        const shell = document.createElement("div");
+        shell.className = "slider-shell";
+
+        const parent = grid.parentNode;
+        parent.insertBefore(shell, grid);
+        shell.appendChild(grid);
+
+        const controls = document.createElement("div");
+        controls.className = "slider-controls";
+
+        const prevBtn = document.createElement("button");
+        prevBtn.className = "slider-btn prev hidden";
+        prevBtn.type = "button";
+        prevBtn.setAttribute("aria-label", "Card precedente");
+
+        const dots = document.createElement("div");
+        dots.className = "slider-dots";
+
+        const nextBtn = document.createElement("button");
+        nextBtn.className = "slider-btn next";
+        nextBtn.type = "button";
+        nextBtn.setAttribute("aria-label", "Card successiva");
+
+        controls.appendChild(prevBtn);
+        controls.appendChild(dots);
+        controls.appendChild(nextBtn);
+        shell.appendChild(controls);
+
+        let currentIndex = 0;
+
+        cards.forEach((_, i) => {
+          const dot = document.createElement("button");
+          dot.className = "slider-dot" + (i === 0 ? " active" : "");
+          dot.type = "button";
+          dot.setAttribute("aria-label", "Vai alla card " + (i + 1));
+          dot.addEventListener("click", () => goToSlide(i));
+          dots.appendChild(dot);
         });
-        updateUI();
-      }
 
-      prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
-      nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
+        const allDots = dots.querySelectorAll(".slider-dot");
 
-      let touchStartX = 0;
-      let touchEndX = 0;
+        function updateUI() {
+          prevBtn.classList.toggle("hidden", currentIndex === 0);
+          nextBtn.classList.toggle("hidden", currentIndex === cards.length - 1);
 
-      grid.addEventListener("touchstart", (e) => {
-        touchStartX = e.changedTouches[0].clientX;
-      }, { passive: true });
-
-      grid.addEventListener("touchend", (e) => {
-        touchEndX = e.changedTouches[0].clientX;
-        const diff = touchStartX - touchEndX;
-
-        if (Math.abs(diff) > 50) {
-          if (diff > 0) {
-            goToSlide(currentIndex + 1);
-          } else {
-            goToSlide(currentIndex - 1);
-          }
+          allDots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentIndex);
+          });
         }
-      }, { passive: true });
 
-      updateUI();
+        function goToSlide(index) {
+          currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+          grid.scrollTo({
+            left: currentIndex * grid.clientWidth,
+            behavior: "smooth"
+          });
+          updateUI();
+        }
+
+        prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
+        nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        grid.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+        }, { passive: true });
+
+        grid.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].clientX;
+          const diff = touchStartX - touchEndX;
+
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              goToSlide(currentIndex + 1);
+            } else {
+              goToSlide(currentIndex - 1);
+            }
+          }
+        }, { passive: true });
+
+        updateUI();
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
