@@ -396,32 +396,46 @@
     }
 
     /* ===== SLIDER CARD ===== */
-    .slider-shell {
-      position: relative;
-      margin-top: 6px;
-    }
+.slider-shell {
+  position: relative;
+  margin-top: 6px;
+  overflow: hidden;
+}
 
-    .grid.slider-ready {
-      display: flex !important;
-      gap: 18px;
-      overflow: hidden;
-      scroll-behavior: smooth;
-      touch-action: pan-y;
-    }
+.grid.slider-ready {
+  display: flex !important;
+  gap: 0;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  touch-action: pan-y;
+}
 
-    .grid.slider-ready .card {
-      min-width: 100%;
-      flex: 0 0 100%;
-      margin: 0;
-    }
+.grid.slider-ready .card {
+  flex: 0 0 100%;
+  min-width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-    .slider-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 18px;
-    }
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+    
+.grid.slider-ready > * {
+  width: 100%;
+}
+
+.grid.slider-ready .card p,
+.grid.slider-ready .card li,
+.grid.slider-ready .card h3 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
 
     .slider-btn {
       width: 46px;
@@ -902,13 +916,14 @@
         }
 
         function goToSlide(index) {
-          currentIndex = Math.max(0, Math.min(index, cards.length - 1));
-          grid.scrollTo({
-            left: currentIndex * grid.clientWidth,
-            behavior: "smooth"
-          });
-          updateUI();
-        }
+  currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+  const targetCard = cards[currentIndex];
+  grid.scrollTo({
+    left: targetCard.offsetLeft,
+    behavior: "smooth"
+  });
+  updateUI();
+}
 
         prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
         nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
