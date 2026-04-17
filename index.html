@@ -416,7 +416,123 @@
       .hero-media {
         max-width: 560px;
       }
-    }
+/* ===== SLIDER CARD ===== */
+.slider-shell {
+  position: relative;
+  margin-top: 6px;
+}
+
+.grid.slider-ready {
+  display: flex !important;
+  gap: 18px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  touch-action: pan-y;
+}
+
+.grid.slider-ready .card {
+  min-width: 100%;
+  flex: 0 0 100%;
+  margin: 0;
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.slider-btn {
+  width: 46px;
+  height: 46px;
+  border: 1px solid #d8ccb4;
+  background: #ffffff;
+  color: #1f1f1f;
+  border-radius: 999px;
+  font-size: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.slider-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+}
+
+.slider-btn::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid currentColor;
+  border-right: 3px solid currentColor;
+  display: block;
+}
+
+.slider-btn.prev::before {
+  transform: rotate(-135deg);
+  margin-left: 4px;
+}
+
+.slider-btn.next::before {
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+
+.slider-btn.hidden {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.slider-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(31,31,31,0.22);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.slider-dot.active {
+  background: #1f1f1f;
+  transform: scale(1.15);
+}
+
+.dark-section .slider-btn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: none;
+}
+
+.dark-section .slider-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: none;
+  background: rgba(255,255,255,0.12);
+}
+
+.dark-section .slider-dot {
+  background: rgba(255,255,255,0.28);
+}
+
+.dark-section .slider-dot.active {
+  background: white;
+} 
   </style>
 </head>
 <body>
@@ -792,19 +908,178 @@
   </div>
 
   <script>
-    function openVideo() {
-      document.getElementById("videoModal").style.display = "flex";
-      document.getElementById("videoFrame").src =
-        "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
-    }
+  function openVideo() {
+    document.getElementById("videoModal").style.display = "flex";
+    document.getElementById("videoFrame").src =
+      "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
+  }
 
-    function closeVideo(event) {
-      if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
-        document.getElementById("videoModal").style.display = "none";
-        document.getElementById("videoFrame").src = "";
-      }
+  function closeVideo(event) {
+    if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
+      document.getElementById("videoModal").style.display = "none";
+      document.getElementById("videoFrame").src = "";
     }
-  </script>
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const grids = document.querySelectorAll(".grid");
+
+    grids.forEach((grid, gridIndex) => {
+      const cards = grid.querySelectorAll(".card");
+      if (cards.length <= 1) return;
+
+      grid.classList.add("slider-ready");
+
+      const shell = document.createElement("div");
+      shell.className = "slider-shell";
+
+      const parent = grid.parentNode;
+      parent.insertBefore(shell, grid);
+      shell.appendChild(grid);
+
+      const controls = document.createElement("div");
+      controls.className = "slider-controls";
+
+      const prevBtn = document.createElement("button");
+      prevBtn.className = "slider-btn hidden";
+      prevBtn.setAttribute("type", "button");
+      prevBtn.innerHTML = "‹";
+
+      const dots = document.createElement("div");
+      dots.className = "slider-dots";
+
+      const nextBtn = document.createElement("button");
+      nextBtn.className = "slider-btn";
+      nextBtn.setAttribute("type", "button");
+      nextBtn.innerHTML = "›";
+
+      controls.appendChild(prevBtn);
+      controls.appendChild(dots);
+      controls.appendChild(nextBtn);
+      shell.appendChild(controls);
+
+      let currentIndex = 0;
+
+      cards.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "slider-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("type", "button");
+        dot.setAttribute("aria-label", "Vai alla card " + (i + 1));
+        dot.addEventListener("click", () => goToSlide(i));
+        dots.appendChild(dot);
+      });
+
+      const allDots = dots.querySelectorAll(".slider-dot");
+<script>
+  function openVideo() {
+    document.getElementById("videoModal").style.display = "flex";
+    document.getElementById("videoFrame").src =
+      "https://www.youtube.com/embed/8KvxqnkLFi0?autoplay=1&rel=0";
+  }
+
+  function closeVideo(event) {
+    if (!event || event.target.id === "videoModal" || event.target.className === "video-close") {
+      document.getElementById("videoModal").style.display = "none";
+      document.getElementById("videoFrame").src = "";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const grids = document.querySelectorAll(".grid");
+
+    grids.forEach((grid) => {
+      const cards = grid.querySelectorAll(".card");
+      if (cards.length <= 1) return;
+
+      grid.classList.add("slider-ready");
+
+      const shell = document.createElement("div");
+      shell.className = "slider-shell";
+
+      const parent = grid.parentNode;
+      parent.insertBefore(shell, grid);
+      shell.appendChild(grid);
+
+      const controls = document.createElement("div");
+      controls.className = "slider-controls";
+
+      const prevBtn = document.createElement("button");
+      prevBtn.className = "slider-btn prev hidden";
+      prevBtn.setAttribute("type", "button");
+      prevBtn.setAttribute("aria-label", "Card precedente");
+
+      const dots = document.createElement("div");
+      dots.className = "slider-dots";
+
+      const nextBtn = document.createElement("button");
+      nextBtn.className = "slider-btn next";
+      nextBtn.setAttribute("type", "button");
+      nextBtn.setAttribute("aria-label", "Card successiva");
+
+      controls.appendChild(prevBtn);
+      controls.appendChild(dots);
+      controls.appendChild(nextBtn);
+      shell.appendChild(controls);
+
+      let currentIndex = 0;
+
+      cards.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "slider-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("type", "button");
+        dot.setAttribute("aria-label", "Vai alla card " + (i + 1));
+        dot.addEventListener("click", () => goToSlide(i));
+        dots.appendChild(dot);
+      });
+
+      const allDots = dots.querySelectorAll(".slider-dot");
+
+      function updateUI() {
+        prevBtn.classList.toggle("hidden", currentIndex === 0);
+        nextBtn.classList.toggle("hidden", currentIndex === cards.length - 1);
+
+        allDots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === currentIndex);
+        });
+      }
+
+      function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+        const targetCard = cards[currentIndex];
+        grid.scrollTo({
+          left: targetCard.offsetLeft,
+          behavior: "smooth"
+        });
+        updateUI();
+      }
+
+      prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
+      nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      grid.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+
+      grid.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            goToSlide(currentIndex + 1);
+          } else {
+            goToSlide(currentIndex - 1);
+          }
+        }
+      }, { passive: true });
+
+      updateUI();
+    });
+  });
+</script>
 
 </body>
 </html>
